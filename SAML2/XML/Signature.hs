@@ -30,7 +30,6 @@ import qualified Data.ByteString.Base64 as Base64
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.List.NonEmpty as NonEmpty
 import Data.Maybe (isJust)
-import Data.Monoid ((<>))
 import qualified Data.X509 as X509
 import Network.URI (URI(..))
 import qualified Text.XML.HXT.Core as HXT
