@@ -69,18 +69,12 @@ library
     SAML2.Bindings.Internal
   c-sources:
     SAML2/XML/libxml2_stub.c
-  if flag(crypton)
-    build-depends:
-      crypton,
-      crypton-x509,
-      crypton-asn1-types,
-      crypton-asn1-encoding
-  else
-    build-depends:
-      cryptonite,
-      x509,
-      asn1-types >= 0.2,
-      asn1-encoding
+  build-depends:
+    crypton >=1.1,
+    crypton-x509,
+    crypton-asn1-types,
+    crypton-asn1-encoding,
+    ram
   build-depends:
     base >=4.8 && <5,
     base64-bytestring,
@@ -93,7 +87,6 @@ library
     invertible,
     invertible-hxt,
     lens,
-    memory,
     mtl,
     network-uri,
     process,
@@ -121,14 +114,9 @@ test-suite tests
     XML.Signature
   default-language: Haskell2010
   ghc-options: -Wall
-  if flag(crypton)
-    build-depends:
-      crypton,
-      crypton-x509
-  else
-    build-depends:
-      cryptonite,
-      x509
+  build-depends:
+    crypton,
+    crypton-x509
   build-depends:
     base,
     base64-bytestring,
