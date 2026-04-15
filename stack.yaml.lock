@@ -25,6 +25,13 @@ packages:
       size: 195
   original:
     hackage: invertible-hxt-0.1
+- completed:
+    hackage: ram-0.22.0@sha256:f6ce64a025929eb6ce42deeb80d072960a9ea2d83b9b9b28de668cc2b623127c,2814
+    pantry-tree:
+      sha256: 701a4505989d85ba17aabe4695bc63eabffbbb61fc6af195c63e526d77181f83
+      size: 2285
+  original:
+    hackage: ram-0.22.0
 snapshots:
 - completed:
     sha256: daa0c3bbf71e6cfdfde7638457b6657b7ec96a242261b70dc261d255ad80462f
