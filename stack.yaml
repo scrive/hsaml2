@@ -1,6 +1,11 @@
-resolver: lts-20.26
+resolver: nightly-2026-01-19
 packages:
 - .
 extra-deps:
+- crypton-1.0.6
+- crypton-x509-1.8.0
+- crypton-asn1-types-0.4.1
+- crypton-asn1-encoding-0.10.0
+- crypton-asn1-parse-0.10.0
 - invertible-0.2.0.8
 - invertible-hxt-0.1

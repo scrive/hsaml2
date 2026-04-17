@@ -5,6 +5,13 @@
 
 packages:
 - completed:
+    hackage: crypton-1.0.6@sha256:6686b3517a065530a5b10fd7b186055815d79b30b15c5eb27cb87a1794595ddd,16653
+    pantry-tree:
+      sha256: a610b645a866c77dfc947af400685930b191e681e73280466451e46448960cfe
+      size: 23412
+  original:
+    hackage: crypton-1.0.6
+- completed:
     hackage: invertible-0.2.0.8@sha256:a6bfbf7e48a1744716134d8c73b3dec2d668ee13ba2c7cffce73621a275d559f,3628
     pantry-tree:
       sha256: cd61072adf765d8ad2fd782f5c2f2c23e7c3d2bfdc267194129305e9de415d03
@@ -20,7 +27,7 @@ packages:
     hackage: invertible-hxt-0.1
 snapshots:
 - completed:
-    sha256: 5a59b2a405b3aba3c00188453be172b85893cab8ebc352b1ef58b0eae5d248a2
-    size: 650475
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/26.yaml
-  original: lts-20.26
+    sha256: daa0c3bbf71e6cfdfde7638457b6657b7ec96a242261b70dc261d255ad80462f
+    size: 719997
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2026/1/19.yaml
+  original: nightly-2026-01-19
