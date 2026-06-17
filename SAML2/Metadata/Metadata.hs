@@ -332,9 +332,9 @@ instance XP.XmlPickler Contact where
     XP.>$<  (XP.xpAttr "contactType" XP.xpickle
       XP.>*< XP.xpAnyAttrs
       XP.>*< XP.xpickle
-      XP.>*< XP.xpOption (xpElem "Company" XS.xpString)
-      XP.>*< XP.xpOption (xpElem "GivenName" XS.xpString)
-      XP.>*< XP.xpOption (xpElem "SurName" XS.xpString)
+      XP.>*< XP.xpOption (xpElem "Company" XP.xpText0)
+      XP.>*< XP.xpOption (xpElem "GivenName" XP.xpText0)
+      XP.>*< XP.xpOption (xpElem "SurName" XP.xpText0)
       XP.>*< XP.xpList (xpElem "EmailAddress" XS.xpAnyURI)
       XP.>*< XP.xpList (xpElem "TelephoneNumber" XP.xpText0))
 
