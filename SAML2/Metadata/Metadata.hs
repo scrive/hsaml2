@@ -336,7 +336,7 @@ instance XP.XmlPickler Contact where
       XP.>*< XP.xpOption (xpElem "GivenName" XS.xpString)
       XP.>*< XP.xpOption (xpElem "SurName" XS.xpString)
       XP.>*< XP.xpList (xpElem "EmailAddress" XS.xpAnyURI)
-      XP.>*< XP.xpList (xpElem "TelephoneNumber" XS.xpString))
+      XP.>*< XP.xpList (xpElem "TelephoneNumber" XP.xpText0))
 
 data ContactType
   = ContactTypeTechnical
