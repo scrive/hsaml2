@@ -37,12 +37,12 @@ import qualified Data.ByteArray as BA
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Base64 as Base64
 import qualified Data.ByteString.Lazy as BSL
+import qualified Data.ByteString.Lazy.UTF8 as BSLU
 import qualified Data.List.NonEmpty as NonEmpty
 import Data.Either (isRight)
 import Data.Maybe (listToMaybe)
 import Network.URI (URI(..))
 import qualified Text.XML.HXT.Core as HXT
-import qualified Text.XML.HXT.DOM.ShowXml as DOM
 import qualified Text.XML.HXT.DOM.XmlNode as DOM
 import qualified Text.XML.HXT.DOM.QualifiedName as DOM
 
@@ -76,7 +76,8 @@ applyTransformsXML (Transform (Identified TransformEnvelopedSignature) Nothing [
   . listToMaybe
   . HXT.runLA (HXT.processChildren $ HXT.processChildren
     $ HXT.neg (isDSElem "Signature"))
-applyTransformsXML tl = applyTransformsBytes tl . DOM.xshowBlob . return
+applyTransformsXML tl = applyTransformsBytes tl
+  . BSLU.fromString . concat . HXT.runLA (HXT.xshowEscapeXml HXT.this)
 
 applyTransforms :: Maybe Transforms -> HXT.XmlTree -> IO BSL.ByteString
 applyTransforms = applyTransformsXML . maybe [] (NonEmpty.toList . transforms)
