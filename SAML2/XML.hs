@@ -35,7 +35,6 @@ import qualified Data.Invertible as Inv
 import Data.Maybe (listToMaybe)
 import Network.URI (URI)
 import qualified Text.XML.HXT.Core as HXT
-import qualified Text.XML.HXT.DOM.ShowXml
 import Text.XML.HXT.DOM.XmlNode (getChildren)
 import qualified Data.Tree.NTree.TypeDefs as HXT
 
@@ -110,15 +109,21 @@ samlToDocFirstChild = head . getChildren . head
   . XP.pickleDoc XP.xpickle
 
 -- | see also 'docToXMLWithRoot'
+--
+-- Produces UTF-8 encoded `ByteString`.
 docToXMLWithoutRoot :: HXT.XmlTree -> BSL.ByteString
-docToXMLWithoutRoot =  BSL.concat . HXT.runLA (HXT.xshowBlob HXT.getChildren)
+docToXMLWithoutRoot =
+  BSLU.fromString . concat . HXT.runLA (HXT.xshowEscapeXml HXT.getChildren)
 
--- | 'docToXML' chops off the root element from the tree.  'docToXMLWithRoot' does not do
--- this.  it may make sense to remove 'docToXMLWithoutRoot', but since i don't understand this
+-- | 'docToXMLWithoutRoot' chops off the root element from the tree.  'docToXMLWithRoot' does not do
+-- this. It may make sense to remove 'docToXMLWithoutRoot', but since i don't understand this
 -- code enough to be confident not to break anything, i'll just leave this extra function for
 -- reference.
+--
+-- Produces UTF-8 encoded `ByteString`.
 docToXMLWithRoot :: HXT.XmlTree -> BSL.ByteString
-docToXMLWithRoot = Text.XML.HXT.DOM.ShowXml.xshowBlob . (:[])
+docToXMLWithRoot =
+  BSLU.fromString . concat . HXT.runLA (HXT.xshowEscapeXml HXT.this)
 
 samlToXML :: XP.XmlPickler a => a -> BSL.ByteString
 samlToXML = docToXMLWithoutRoot . samlToDoc
